@@ -4,7 +4,6 @@ parser start {
 
 #define ETHERTYPE_IPV4 0x0800
 
-header ethernet_t ethernet;
 
 parser parse_ethernet {
     extract(ethernet);
@@ -14,7 +13,6 @@ parser parse_ethernet {
     }
 }
 
-header ipv4_t ipv4;
 
 #define PROTO_TCP 6
 #define PROTO_UDP 17
@@ -28,8 +26,6 @@ parser parse_ipv4 {
     }
 }
 
-header tcp_t tcp;
-header udp_t udp;
 
 parser parse_tcp {
     extract(tcp);

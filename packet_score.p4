@@ -99,11 +99,11 @@ table classify {
 	}
 	actions {
 		send_out;
-		drop;
+		_drop;
 	}
 }
 
-Control ingress {
+control ingress {
 	apply(l4_ports);
 	apply(src_ip);
 	apply(dst_ip);
@@ -112,4 +112,8 @@ Control ingress {
 	apply(dst_port);
 	apply(sum_up);
 	apply(classify);
+}
+
+control egress {
+	
 }
