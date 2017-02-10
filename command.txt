@@ -1,0 +1,17 @@
+table_add l4_ports set_tcp_ports 6 =>
+table_add l4_ports set_udp_ports 17 =>
+table_add src_ip add_score 192.168.1.125/24 => 5
+table_add src_ip_others add_score => 0
+table_add dst_ip add_score 10.0.0.70/24 => 3
+table_add dst_ip_others add_score => 0
+table_add proto add_score 6 => 6
+table_add proto_others add_score => 0
+table_add src_port add_score 14 => 14
+table_add src_port_high add_score => 0
+table_add src_port_low add_score => 0
+table_add dst_port add_score 50 => 50
+table_add dst_port_high add_score => 0
+table_add dst_port_low add_score => 0
+table_add sum_up add_score => 100
+table_add classify send_out 0->179 => 3 10
+table_set_default classify _drop =>
