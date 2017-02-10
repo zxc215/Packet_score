@@ -21,7 +21,10 @@ int pif_plugin_add_score_array(EXTRACTED_HEADERS_T* headers, MATCH_DATA_T* data)
         return PIF_PLUGIN_RETURN_DROP;
     }
 
-    score_array[array_tail++] = score_metadata->score;
+    if(array_tail < ARRAY_SIZE)
+    {
+         score_array[array_tail++] = score_metadata->score;
+    }
 
     return PIF_PLUGIN_RETURN_FORWARD;
 }
