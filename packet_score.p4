@@ -117,7 +117,7 @@ counter src_port_low_counter {
 	direct: src_port_low;
 }
 
-table src_low_high {
+table src_port_low {
 	actions {
 		add_score;
 	}
@@ -153,7 +153,7 @@ counter dst_port_low_counter {
 	direct: dst_port_low;
 }
 
-table dst_low_high {
+table dst_port_low {
 	actions {
 		add_score;
 	}
@@ -198,7 +198,7 @@ control ingress {
 			apply(proto_others);
 		}
 	}
-	apply(src_port);
+	apply(src_port) {
 		miss {
 			if (l4.sport >= 1024) {
 				apply(src_port_high);
@@ -207,6 +207,7 @@ control ingress {
 				apply(src_port_low);
 			}
 		}
+	}
 	apply(dst_port) {
 		miss {
 			if (l4.dport >= 1024) {
