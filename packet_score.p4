@@ -167,6 +167,7 @@ counter n_flow_counter {
 table sum_up {
 	actions {
 		add_score;
+		add_array;
 	}
 }
 

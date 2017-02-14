@@ -16,6 +16,12 @@ action send_out(out_port) {
 	modify_field(standard_metadata.egress_spec, out_port);
 }
 
+primitive_action add_to_array();
+
+action add_array() {
+	add_to_array();
+}
+
 action _drop() {
 	drop();
 }
