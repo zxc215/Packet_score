@@ -1,0 +1,4 @@
+*.list/*
+*~
+.DS_Store
+*.idea/*
