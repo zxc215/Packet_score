@@ -65,7 +65,7 @@ counter proto_counter_1 {
 
 table proto_1 {
 	reads {
-		ipv4.protocol: ternary;
+		ipv4.protocol: exact;
 	}
 	actions {
 		_nop;
@@ -146,7 +146,7 @@ counter proto_counter_2 {
 
 table proto_2 {
 	reads {
-		ipv4.protocol: ternary;
+		ipv4.protocol: exact;
 	}
 	actions {
 		_nop;
@@ -212,7 +212,7 @@ table dst_ip_score_1 {
 
 table proto_score_1 {
 	reads {
-		ipv4.protocol: ternary;
+		ipv4.protocol: exact;
 	}
 	actions {
 		add_score;
@@ -262,7 +262,7 @@ table dst_ip_score_2 {
 
 table proto_score_2 {
 	reads {
-		ipv4.protocol: ternary;
+		ipv4.protocol: exact;
 	}
 	actions {
 		add_score;
@@ -302,7 +302,6 @@ counter n_flow_counter {
 table sum_up {
 	actions {
 		add_score;
-		add_array;
 	}
 }
 
