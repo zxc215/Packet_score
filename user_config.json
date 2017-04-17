@@ -72,8 +72,18 @@
           }
         }
       ]
+
+      
     },
     "src_ip_2" : {
+      "default_rule" :
+      {
+        "name" : "src_ip_2_default",
+        "action" : {
+          "type" : "__src_ip_2___nop",
+          "data" : { }
+        }
+      },
       "rules" : [
         {
           "name" : "src_ip_2_1",
@@ -90,6 +100,14 @@
       ]
     },
     "dst_ip_1" : {
+       "default_rule" :
+      {
+        "name" : "dst_ip_1_default",
+        "action" : {
+          "type" : "__dst_ip_1___nop",
+          "data" : { }
+        }
+      },
       "rules" : [
         {
           "name" : "dst_ip_1_1",
@@ -106,6 +124,14 @@
       ]
     },
     "dst_ip_2" : {
+       "default_rule" :
+      {
+        "name" : "dst_ip_2_default",
+        "action" : {
+          "type" : "__dst_ip_2___nop",
+          "data" : { }
+        }
+      },
       "rules" : [
         {
           "name" : "dst_ip_2_1",
@@ -127,7 +153,31 @@
           "name" : "src_port_1_1",
           "match" : {
             "l4.sport" : {
+              "value" : "14->14"
+            }
+          },
+          "action" : {
+            "type" : "__src_port_1___nop",
+            "data" : { }
+          }
+        },
+        {
+          "name" : "src_port_1_2",
+          "match" : {
+            "l4.sport" : {
               "value" : "0->1024"
+            }
+          },
+          "action" : {
+            "type" : "__src_port_1___nop",
+            "data" : { }
+          }
+        },
+        {
+          "name" : "src_port_1_3",
+          "match" : {
+            "l4.sport" : {
+              "value" : "1025->65535"
             }
           },
           "action" : {
@@ -143,7 +193,31 @@
           "name" : "src_port_2_1",
           "match" : {
             "l4.sport" : {
+              "value" : "14->14"
+            }
+          },
+          "action" : {
+            "type" : "__src_port_2___nop",
+            "data" : { }
+          }
+        },
+        {
+          "name" : "src_port_2_2",
+          "match" : {
+            "l4.sport" : {
               "value" : "0->1024"
+            }
+          },
+          "action" : {
+            "type" : "__src_port_2___nop",
+            "data" : { }
+          }
+        },
+        {
+          "name" : "src_port_2_3",
+          "match" : {
+            "l4.sport" : {
+              "value" : "1025->65535"
             }
           },
           "action" : {
@@ -159,7 +233,31 @@
           "name" : "dst_port_1_1",
           "match" : {
             "l4.dport" : {
+              "value" : "50->50"
+            }
+          },
+          "action" : {
+            "type" : "__dst_port_1___nop",
+            "data" : { }
+          }
+        },
+        {
+          "name" : "dst_port_1_2",
+          "match" : {
+            "l4.dport" : {
               "value" : "0->1024"
+            }
+          },
+          "action" : {
+            "type" : "__dst_port_1___nop",
+            "data" : { }
+          }
+        },
+        {
+          "name" : "dst_port_1_3",
+          "match" : {
+            "l4.dport" : {
+              "value" : "1025->65535"
             }
           },
           "action" : {
@@ -182,10 +280,42 @@
             "type" : "__dst_port_2___nop",
             "data" : { }
           }
+        },
+        {
+          "name" : "dst_port_2_2",
+          "match" : {
+            "l4.dport" : {
+              "value" : "0->1024"
+            }
+          },
+          "action" : {
+            "type" : "__dst_port_2___nop",
+            "data" : { }
+          }
+        },
+        {
+          "name" : "dst_port_2_3",
+          "match" : {
+            "l4.dport" : {
+              "value" : "1025->65535"
+            }
+          },
+          "action" : {
+            "type" : "__dst_port_2___nop",
+            "data" : { }
+          }
         }
       ]
     },
     "proto_1" : {
+       "default_rule" :
+      {
+        "name" : "proto_1_default",
+        "action" : {
+          "type" : "__proto_1___nop",
+          "data" : { }
+        }
+      },
       "rules" : [
         {
           "name" : "proto_1_1",
@@ -202,6 +332,14 @@
       ]
     },
     "proto_2" : {
+      "default_rule" :
+      {
+        "name" : "proto_2_default",
+        "action" : {
+          "type" : "__proto_2___nop",
+          "data" : { }
+        }
+      },
       "rules" : [
         {
           "name" : "proto_2_1",
@@ -631,7 +769,19 @@
           "name" : "classify_1",
           "match" : {
             "score_metadata.score" : {
-              "value" : "0->179"
+              "value" : "0->150"
+            }
+          },
+         "action" : {
+            "type" : "_drop",
+            "data" : {}
+          }
+        },
+        {
+          "name" : "classify_2",
+          "match" : {
+            "score_metadata.score" : {
+              "value" : "150->179"
             }
           },
           "action" : {
@@ -644,13 +794,13 @@
           }
         },
         {
-          "name" : "classify_2",
+          "name" : "classify_3",
           "match" : {
             "score_metadata.score" : {
-              "value" : "180->280"
+              "value" : "180->300"
             }
           },
-          "action" : {
+           "action" : {
             "type" : "send_out",
             "data" : {
               "out_port" : {
@@ -658,18 +808,7 @@
               }
             }
           }
-        },
-        {
-          "name" : "classify_3",
-          "match" : {
-            "score_metadata.score" : {
-              "value" : "281->65535"
-            }
-          },
-          "action" : {
-            "type" : "_drop",
-            "data" : {}
-          }
+
         }
       ]
     }
